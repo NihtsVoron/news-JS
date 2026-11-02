@@ -8,8 +8,7 @@ class Sources {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
 
-        if (!(sourceItemTemp instanceof HTMLTemplateElement))
-            throw new Error('Source template not found');
+        if (!(sourceItemTemp instanceof HTMLTemplateElement)) throw new Error('Source template not found');
 
         const sourcesContainer = document.querySelector('.sources');
 
