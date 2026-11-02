@@ -8,7 +8,8 @@
     "noImplicitAny": true,
     "allowJs": true,
     "checkJs": false,
-    "outDir": "./dist"
+    "outDir": "./dist",
+     "types": [],
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
