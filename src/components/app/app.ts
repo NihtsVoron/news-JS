@@ -13,11 +13,11 @@ class App {
     start(): void {
         const sourcesContainer = document.querySelector('.sources');
 
-        if (!sourcesContainer)
-            throw new Error('Sources container not found');
+        if (!sourcesContainer) throw new Error('Sources container not found');
 
-        sourcesContainer
-            .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
+        sourcesContainer.addEventListener('click', (e) =>
+            this.controller.getNews(e, (data) => this.view.drawNews(data))
+        );
         this.controller.getSources((data) => this.view.drawSources(data));
     }
 }
