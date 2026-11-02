@@ -1,20 +1,35 @@
 import './sources.css';
+import type { News } from '../../../types/News';
+
+type SourceViewData = Pick<News, 'id' | 'name'>;
 
 class Sources {
-    draw(data) {
+    draw(data: SourceViewData[]): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp');
 
-        data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+        if (!(sourceItemTemp instanceof HTMLTemplateElement))
+            throw new Error('Source template not found');
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+        const sourcesContainer = document.querySelector('.sources');
+
+        if (!sourcesContainer) throw new Error('Sources container not found');
+
+        data.forEach((item) => {
+            const sourceClone = document.importNode(sourceItemTemp.content, true);
+
+            const sourceName = sourceClone.querySelector('.source__item-name');
+            const sourceItem = sourceClone.querySelector('.source__item');
+
+            if (!sourceName || !sourceItem) throw new Error('Source template structure is invalid');
+
+            sourceName.textContent = item.name;
+            sourceItem.setAttribute('data-source-id', item.id);
 
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        sourcesContainer.append(fragment);
     }
 }
 
