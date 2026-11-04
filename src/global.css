@@ -19,17 +19,32 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
 footer .copyright {
     font-size: 14px;
     color: #333;
     text-align: center;
 }
+
 footer .copyright a {
     color: #444;
 }
+
 footer .copyright a:hover {
     color: #555;
 }
+
 footer .copyright:before {
     content: '©';
+}
+
+@media (max-width: 640px) {
+    header h1 {
+        font-size: 30px;
+        max-width: 600px;
+    }
+
+    header {
+       padding: 10px 10px;
+    }
 }
